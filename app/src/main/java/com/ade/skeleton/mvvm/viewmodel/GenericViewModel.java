@@ -16,53 +16,34 @@ import com.ade.skeleton.mvvm.model.ApiResponse;
 
 public class GenericViewModel extends ViewModel {
 
-    private MediatorLiveData<ApiResponse> mApiResponse;
-    private Repository mIRepository;
+    protected MediatorLiveData<ApiResponse> apiResponse;
+    protected Repository repository;
     private ProgressDialog progressDialog;
 
     public GenericViewModel() {
-        mApiResponse = new MediatorLiveData<>();
-        mIRepository = new Repository();
+        apiResponse = new MediatorLiveData<>();
+        repository = new Repository();
     }
 
-    public void showLoading(Context context) {
+    //Todo: Show Progress Loading
+    protected void showProgressLoading(Context context, boolean isCancelable) {
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setIndeterminate(true);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(isCancelable);
         progressDialog.setCanceledOnTouchOutside(false);
 
         progressDialog.show();
 
     }
 
-    public void dissmissLoading() {
+    //Todo: Dismiss Progress Loading
+    protected void dismissProgressLoading() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
-    }
-
-    @NonNull
-    public LiveData<ApiResponse> getApiResponse() {
-        return mApiResponse;
-    }
-
-    public LiveData<ApiResponse> getProduct() {
-        mApiResponse.addSource(
-                mIRepository.getProduct(),
-                apiResponse -> mApiResponse.setValue(apiResponse)
-        );
-        return mApiResponse;
-    }
-
-    public LiveData<ApiResponse> getProductDetail(String id) {
-        mApiResponse.addSource(
-                mIRepository.getProductDetail(id),
-                apiResponse -> mApiResponse.setValue(apiResponse)
-        );
-        return mApiResponse;
     }
 
 }

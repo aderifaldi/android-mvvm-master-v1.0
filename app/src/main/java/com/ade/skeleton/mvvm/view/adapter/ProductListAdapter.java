@@ -13,7 +13,7 @@ import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.helper.GenericViewHolder;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.view.activity.ProductDetailActivity;
-import com.ade.skeleton.mvvm.viewmodel.ProductListViewModel;
+import com.ade.skeleton.mvvm.viewmodel.productlist.ProductListDataBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<GenericViewHolder> 
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
         final Product.Products itemData = listItem.get(position);
-        ProductListViewModel viewModel = new ProductListViewModel(itemData, view ->
+        ProductListDataBinding viewModel = new ProductListDataBinding(itemData, view ->
                 context.startActivity(new Intent(context, ProductDetailActivity.class)
                         .putExtra("product", itemData))
         );

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.view.adapter.ProductListAdapter;
-import com.ade.skeleton.mvvm.viewmodel.GenericViewModel;
+import com.ade.skeleton.mvvm.viewmodel.productlist.ProductListViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.list_product)
     RecyclerView listProduct;
 
-    private GenericViewModel viewModel;
+    private ProductListViewModel viewModel;
     private LinearLayoutManager linearLayoutManager;
     private ProductListAdapter adapter;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
-        viewModel = ViewModelProviders.of(this).get(GenericViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(ProductListViewModel.class);
 
         linearLayoutManager = new LinearLayoutManager(this);
         adapter = new ProductListAdapter(this);
@@ -43,16 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadProductList() {
 
-        //Todo: Show loading
-        viewModel.showLoading(this);
+        //Todo: Show Progress Bar
+        viewModel.showLoading(this, true);
 
-        //Todo: Hit Api getProduct
-        viewModel.getProduct();
+        //Todo: Hit Api getProductList
+        viewModel.getProductList();
 
         //Todo: Handle changes emitted by LiveData
         viewModel.getApiResponse().observe(this, apiResponse -> {
 
-            viewModel.dissmissLoading();
+            //Todo: Dismiss Progress Bar
+            viewModel.dismissLoading();
 
             if (apiResponse != null) {
                 if (apiResponse.getError() == null) {

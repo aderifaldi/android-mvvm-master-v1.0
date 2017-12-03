@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
  */
 
 public class GenericViewHolder extends RecyclerView.ViewHolder{
-    ViewDataBinding binding;
+    private ViewDataBinding binding;
 
     public GenericViewHolder(ViewDataBinding binding) {
         super(binding.getRoot());

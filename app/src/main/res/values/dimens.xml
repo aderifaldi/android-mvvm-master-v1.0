@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="paddingNormal">16dp</dimen>
+    <dimen name="marginMedium">8dp</dimen>
+    <dimen name="marginNormal">16dp</dimen>
+    <dimen name="paddingMedium">8dp</dimen>
 </resources>

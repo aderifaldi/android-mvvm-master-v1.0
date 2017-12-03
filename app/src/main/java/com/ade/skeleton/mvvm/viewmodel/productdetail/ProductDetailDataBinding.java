@@ -1,4 +1,4 @@
-package com.ade.skeleton.mvvm.viewmodel;
+package com.ade.skeleton.mvvm.viewmodel.productdetail;
 
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
@@ -13,14 +13,14 @@ import com.ade.skeleton.mvvm.model.ProductDetail;
  * Created by Irfan AFif on 10/6/2017.
  */
 
-public class ProductDetailViewModel extends BaseObservable {
+public class ProductDetailDataBinding extends BaseObservable {
 
     private String productName;
     private String productPrice;
     private String productDesc;
     private String productImage;
 
-    public ProductDetailViewModel(ProductDetail.Product product) {
+    public ProductDetailDataBinding(ProductDetail.Product product) {
         productName = product.getName();
         productPrice = AppUtility.formatMoney("Rp. ", product.getPrice(), '.', "");
         productDesc = String.valueOf(Html.fromHtml(product.getDesc()));

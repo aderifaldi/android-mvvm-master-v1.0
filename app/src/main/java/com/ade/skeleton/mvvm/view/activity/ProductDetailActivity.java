@@ -10,8 +10,8 @@ import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.databinding.ProductDetailActivityBinding;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.model.ProductDetail;
-import com.ade.skeleton.mvvm.viewmodel.GenericViewModel;
-import com.ade.skeleton.mvvm.viewmodel.ProductDetailViewModel;
+import com.ade.skeleton.mvvm.viewmodel.productdetail.ProductDetailViewModel;
+import com.ade.skeleton.mvvm.viewmodel.productdetail.ProductDetailDataBinding;
 
 /**
  * Created by RadyaLabs PC on 29/11/2017.
@@ -20,7 +20,7 @@ import com.ade.skeleton.mvvm.viewmodel.ProductDetailViewModel;
 public class ProductDetailActivity extends AppCompatActivity {
 
     private ProductDetailActivityBinding productDetailActivityBinding;
-    private GenericViewModel viewModel;
+    private ProductDetailViewModel viewModel;
     private Product.Products product;
 
     @Override
@@ -30,16 +30,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         productDetailActivityBinding = DataBindingUtil.setContentView(this, R.layout.product_detail_activity);
 
         product = (Product.Products) getIntent().getExtras().getSerializable("product");
-        viewModel = ViewModelProviders.of(this).get(GenericViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(ProductDetailViewModel.class);
 
         loadProductDetail();
 
     }
 
     private void loadProductDetail() {
-
-        //Todo: Show loading
-        viewModel.showLoading(this);
+        //Todo: Show Progress Bar
+        viewModel.showLoading(this, false);
 
         //Todo: Hit Api Product Detail
         viewModel.getProductDetail(product.getId());
@@ -47,13 +46,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         //Todo: Handle change emitted by LiveData
         viewModel.getApiResponse().observe(this, apiResponse -> {
 
-            viewModel.dissmissLoading();
+            //Todo: Dismiss Progress Bar
+            viewModel.dismissLoading();
 
             if (apiResponse != null) {
                 if (apiResponse.getError() == null) {
                     ProductDetail data = (ProductDetail) apiResponse.getData();
                     if (data.getStatus().equals("OK")) {
-                        ProductDetailViewModel productDetailDataBinding = new ProductDetailViewModel(data.getProduct());
+                        ProductDetailDataBinding productDetailDataBinding = new ProductDetailDataBinding(data.getProduct());
                         productDetailActivityBinding.setProductDetailData(productDetailDataBinding);
                     }
                 } else {

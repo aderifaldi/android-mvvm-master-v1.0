@@ -1,4 +1,4 @@
-package com.ade.skeleton.mvvm.viewmodel;
+package com.ade.skeleton.mvvm.viewmodel.productlist;
 
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
@@ -14,7 +14,7 @@ import com.ade.skeleton.mvvm.model.Product;
  * Created by RadyaLabs PC on 29/11/2017.
  */
 
-public class ProductListViewModel extends BaseObservable{
+public class ProductListDataBinding extends BaseObservable{
 
     private View.OnClickListener onClickListener;
     private String productName;
@@ -22,7 +22,7 @@ public class ProductListViewModel extends BaseObservable{
     private String productDesc;
     private String productImage;
 
-    public ProductListViewModel(Product.Products product, View.OnClickListener onClickListener) {
+    public ProductListDataBinding(Product.Products product, View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
 
         productName = product.getName();
