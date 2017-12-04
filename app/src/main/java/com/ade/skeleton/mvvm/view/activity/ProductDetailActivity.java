@@ -10,8 +10,8 @@ import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.databinding.ProductDetailActivityBinding;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.model.ProductDetail;
-import com.ade.skeleton.mvvm.viewmodel.productdetail.ProductDetailViewModel;
-import com.ade.skeleton.mvvm.viewmodel.productdetail.ProductDetailDataBinding;
+import com.ade.skeleton.mvvm.viewmodel.ProductDetailViewModel;
+import com.ade.skeleton.mvvm.databinding.ProductDetailDataBinding;
 
 /**
  * Created by RadyaLabs PC on 29/11/2017.
@@ -22,6 +22,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private ProductDetailActivityBinding productDetailActivityBinding;
     private ProductDetailViewModel viewModel;
     private Product.Products product;
+    private ProductDetailDataBinding productDetailDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if (apiResponse.getError() == null) {
                     ProductDetail data = (ProductDetail) apiResponse.getData();
                     if (data.getStatus().equals("OK")) {
-                        ProductDetailDataBinding productDetailDataBinding = new ProductDetailDataBinding(data.getProduct());
+                        productDetailDataBinding = new ProductDetailDataBinding(data.getProduct());
                         productDetailActivityBinding.setProductDetailData(productDetailDataBinding);
                     }
                 } else {

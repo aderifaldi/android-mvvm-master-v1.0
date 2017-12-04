@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.view.adapter.ProductListAdapter;
-import com.ade.skeleton.mvvm.viewmodel.productlist.ProductListViewModel;
+import com.ade.skeleton.mvvm.viewmodel.ProductListViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

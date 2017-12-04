@@ -14,19 +14,19 @@ import com.ade.skeleton.mvvm.model.ApiResponse;
  * Created by RadyaLabs PC on 29/11/2017.
  */
 
-public class GenericViewModel extends ViewModel {
+class BaseViewModel extends ViewModel {
 
-    protected MediatorLiveData<ApiResponse> apiResponse;
-    protected Repository repository;
-    private ProgressDialog progressDialog;
+    MediatorLiveData<ApiResponse> apiResponse;
+    Repository repository;
+    ProgressDialog progressDialog;
 
-    public GenericViewModel() {
+    BaseViewModel() {
         apiResponse = new MediatorLiveData<>();
         repository = new Repository();
     }
 
     //Todo: Show Progress Loading
-    protected void showProgressLoading(Context context, boolean isCancelable) {
+    void showProgressLoading(Context context, boolean isCancelable) {
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setIndeterminate(true);
@@ -40,10 +40,17 @@ public class GenericViewModel extends ViewModel {
     }
 
     //Todo: Dismiss Progress Loading
-    protected void dismissProgressLoading() {
+    void dismissProgressLoading() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
+    }
+
+    public interface IBaseViewModel {
+
+        void showLoading(Context context, boolean isCancelable);
+        void dismissLoading();
+
     }
 
 }

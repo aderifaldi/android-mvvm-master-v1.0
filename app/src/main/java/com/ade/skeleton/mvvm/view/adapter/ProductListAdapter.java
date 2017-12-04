@@ -13,7 +13,7 @@ import com.ade.skeleton.mvvm.R;
 import com.ade.skeleton.mvvm.helper.GenericViewHolder;
 import com.ade.skeleton.mvvm.model.Product;
 import com.ade.skeleton.mvvm.view.activity.ProductDetailActivity;
-import com.ade.skeleton.mvvm.viewmodel.productlist.ProductListDataBinding;
+import com.ade.skeleton.mvvm.databinding.ProductListDataBinding;
 
 import java.util.ArrayList;
 import java.util.List;

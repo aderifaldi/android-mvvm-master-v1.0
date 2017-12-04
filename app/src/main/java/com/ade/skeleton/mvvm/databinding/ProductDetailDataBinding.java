@@ -1,4 +1,4 @@
-package com.ade.skeleton.mvvm.viewmodel.productdetail;
+package com.ade.skeleton.mvvm.databinding;
 
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;

@@ -1,18 +1,16 @@
-package com.ade.skeleton.mvvm.viewmodel.productdetail;
+package com.ade.skeleton.mvvm.viewmodel;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ade.skeleton.mvvm.model.ApiResponse;
-import com.ade.skeleton.mvvm.viewmodel.GenericViewModel;
-import com.ade.skeleton.mvvm.viewmodel.IGenericViewModel;
 
 /**
  * Created by RadyaLabs PC on 29/11/2017.
  */
 
-public class ProductDetailViewModel extends GenericViewModel implements IGenericViewModel{
+public class ProductDetailViewModel extends BaseViewModel implements BaseViewModel.IBaseViewModel {
 
     //Todo: Return Response
     @NonNull

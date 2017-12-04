@@ -5,7 +5,7 @@
     <data>
         <variable
             name="productDetailData"
-            type="com.ade.skeleton.mvvm.viewmodel.productdetail.ProductDetailDataBinding"/>
+            type="com.ade.skeleton.mvvm.databinding.ProductDetailDataBinding"/>
     </data>
 
     <RelativeLayout
